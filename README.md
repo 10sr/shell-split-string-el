@@ -1,4 +1,4 @@
 shell-split-string-el
 =====================
 
-shell split string
+Split string using shell-like syntax.
