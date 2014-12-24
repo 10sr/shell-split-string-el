@@ -45,15 +45,7 @@
 
 (defun shell-split-string (str)
   "Split string STR using shell-like syntax and return resulting list."
-  (if (or (string-match-p "\"" str)
-          (string-match-p "'" str))
-      ;; If " nor ' is not included, simply split-string it
-      (shell--split-string-1 (mapcar 'identity str) nil nil nil)
-    (split-string str
-                  (concat "["
-                          (apply 'string shell-split-string-separators)
-                          "]+")
-                  t)))
+  (shell--split-string-1 (mapcar 'identity str) nil nil nil))
 
 (defun shell--split-string-1 (rest current quote done)
   "Split string using shell-like syntax and return resulting list.
