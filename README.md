@@ -20,3 +20,9 @@ and it works as follows:
 
 
 See test cases under `test/` for more examples how this function works.
+
+
+License
+--------
+
+This software is unlicensed. See `LICENSE` for more information,
