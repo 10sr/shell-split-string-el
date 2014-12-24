@@ -6,6 +6,8 @@
                  '("abc")))
   (should (equal (shell-split-string "abc def")
                  '("abc" "def")))
+  (should (equal (shell-split-string " abc def ")
+                 '("abc" "def")))
   (should (equal (shell-split-string "abc  def")
                  '("abc" "def")))
   (should (equal (shell-split-string "abc \"def\"")
