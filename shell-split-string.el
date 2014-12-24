@@ -71,13 +71,14 @@ DONE is a list of strings that was already processed."
                                    `(,@current ,first)
                                    quote
                                    done)
-          ;; if outside of quotation, current word is terminated
-          ;; if current word is nil, that means multiple separators appear
+          ;; if outside of quotation, reading char is end of current word
           (if current
               (shell--split-string-1 rest
                                      nil
                                      nil
                                      `(,@done ,(apply 'string current)))
+            ;; if current word is nil, that means multiple separators appear
+            ;; successively
             (shell--split-string-1 rest
                                    nil
                                    nil
