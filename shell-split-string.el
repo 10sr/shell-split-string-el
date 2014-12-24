@@ -41,7 +41,7 @@
 
 (defvar shell-split-string-separators
   '(?  ?\f ?\t ?\n ?\r ?\v)
-  "List of chars of separaters.")
+  "List of chars of separators.")
 
 (defun shell-split-string (str)
   "Split string STR using shell-like syntax and return resulting list."
