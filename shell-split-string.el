@@ -80,10 +80,16 @@ DONE is a list of strings that was already processed."
                                    quote
                                    done)
           ;; if outside of quotation, current word is terminated
-          (shell--split-string-1 rest
-                                 nil
-                                 nil
-                                 `(,@done ,(apply 'string current)))))
+          ;; if current word is nil, that means multiple separators appear
+          (if current
+              (shell--split-string-1 rest
+                                     nil
+                                     nil
+                                     `(,@done ,(apply 'string current)))
+            (shell--split-string-1 rest
+                                   nil
+                                   nil
+                                   done))))
 
        ((eq first ?\\)
         ;; backslash
@@ -141,8 +147,6 @@ DONE is a list of strings that was already processed."
                                quote
                                done))
        ))))
-
-(shell--split-string-1 (mapcar 'identity "\"a\"") nil nil nil)
 
 (provide 'shell-split-string)
 
