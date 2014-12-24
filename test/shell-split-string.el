@@ -34,4 +34,6 @@
                  '("a\\bc")))
   (should (equal (shell-split-string "'a\\bc'")
                  '("a\\bc")))
+  (should (equal (shell-split-string "abc && def")
+                 '("abc" "&&" "def")))
   )
