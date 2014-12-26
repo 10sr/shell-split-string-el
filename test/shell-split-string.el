@@ -12,6 +12,8 @@
   `(should-error (shell-split-string ,str)))
 
 (ert-deftest test-shell-split-string ()
+  (ert-sss-should-equal ""
+                        '())
   (ert-sss-should-equal "abc"
                         '("abc"))
   (ert-sss-should-equal "abc def"
