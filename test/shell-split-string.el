@@ -7,6 +7,10 @@
                   ,result))
   )
 
+(defmacro ert-sss-should-error (str)
+  "Judge if `shell-split-string' throws error with arg STR."
+  `(should-error (shell-split-string ,str)))
+
 (ert-deftest test-shell-split-string ()
   (ert-sss-should-equal "abc"
                         '("abc"))
@@ -44,4 +48,6 @@
                         '("a\\bc"))
   (ert-sss-should-equal "abc && def"
                         '("abc" "&&" "def"))
+
+  (ert-sss-should-error "abc \"def")
   )

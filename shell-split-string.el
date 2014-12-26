@@ -60,9 +60,14 @@ The value nil means CURRENT word is not quoted.
 DONE is a list of strings that was already processed."
   (if (not rest)
       ;; If no chars to read left, return resulting list
-      (if current
-          `(,@done ,(apply 'string current))
+      (cond
+       (quote
+        (error "Unmatched quotation"))
+       (current
+        `(,@done ,(apply 'string current)))
+       ('otherwise
         done)
+      )
     (let ((first (car rest))
           (rest (cdr rest)))
       (cond
