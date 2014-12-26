@@ -11,6 +11,14 @@
   "Judge if `shell-split-string' throws error with arg STR."
   `(should-error (shell-split-string ,str)))
 
+(defmacro ert-sss-inverse-check (args)
+  "Check if `shell-split-string' is an inverse function of `mapconcat' and
+ `shell-quote-argument' by ARGS."
+  `(should (equal (shell-split-string (mapconcat 'shell-quote-argument
+                                                  ,args
+                                                  " "))
+                  ,args)))
+
 (ert-deftest test-shell-split-string ()
   (ert-sss-should-equal ""
                         '())
@@ -54,4 +62,7 @@
                         '("abc" "&&" "def"))
 
   (ert-sss-should-error "abc \"def")
+
+  (ert-sss-inverse-check '("ab c" "de f"))
+  (ert-sss-inverse-check '("ab\""))
   )
