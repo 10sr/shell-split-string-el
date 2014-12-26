@@ -42,6 +42,8 @@
                         '("abc" "defg  hi"))
   (ert-sss-should-equal "a\\bc"
                         '("abc"))
+  (ert-sss-should-equal "a\\ bc"
+                        '("a bc"))
   (ert-sss-should-equal "\"a\\bc\""
                         '("a\\bc"))
   (ert-sss-should-equal "'a\\bc'"
