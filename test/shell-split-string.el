@@ -1,4 +1,3 @@
-(require 'ert)
 (require 'shell-split-string)
 
 (defmacro ert-sss-should-equal (str result)

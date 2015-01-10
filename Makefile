@@ -8,5 +8,6 @@ all:
 
 test: $(TESTS_EL)
 	$(EMACS) -batch -Q -L . \
-		--eval "(add-to-list 'command-line-functions (lambda () (load-file argi) (or command-line-args-left (ert-run-tests-batch-and-exit))))" \
+		--eval "(require 'ert)" \
+		--eval "(add-hook 'command-line-functions (lambda () (load-file argi) (or command-line-args-left (ert-run-tests-batch-and-exit))))" \
 		$(TESTS_EL)
