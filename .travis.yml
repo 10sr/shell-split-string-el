@@ -4,5 +4,6 @@ before_install:
   # Install Emacs
   - sudo add-apt-repository -y ppa:cassou/emacs
   - sudo apt-get update -qq
+install:
   - sudo apt-get install -qq emacs24
 script: make test emacs=emacs24
