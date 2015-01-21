@@ -1,4 +1,4 @@
-emacs ?= emacs24
+emacs ?= emacs
 
 tests_el = $(wildcard test/*.el)
 
