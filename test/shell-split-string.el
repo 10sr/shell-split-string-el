@@ -59,6 +59,8 @@
                         '("a\\bc"))
   (ert-sss-should-equal "abc && def"
                         '("abc" "&&" "def"))
+  (ert-sss-should-equal "abc あいう"
+                        '("abc" "あいう"))
 
   (ert-sss-should-error "abc \"def")
 
