@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/10sr/shell-split-string-el.svg?branch=master)](https://travis-ci.org/10sr/shell-split-string-el)
+[![MELPA](http://melpa.org/packages/shell-split-string-badge.svg)](http://melpa.org/#/shell-split-string)
 
 shell-split-string-el
 =====================
