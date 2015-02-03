@@ -1,10 +1,10 @@
 ;;; shell-split-string.el --- Split strings using shell-like syntax
 
-;; Author: 10sr <>
-;; URL: https://github.com/10sr/emacs-lisp/blob/master/shell-split-string.el
+;; Author: 10sr <8.slashes+el [at] gmail [dot] com>
+;; URL: https://github.com/10sr/shell-split-string-el
 ;; Version: 0.1
 ;; Package-Requires: ()
-;; Keywords:
+;; Keywords: utility library shell string
 
 ;; This file is not part of GNU Emacs.
 
@@ -36,6 +36,11 @@
 ;;; Commentary:
 
 ;; shell-split-string.el provides one function `shell-split-string'.
+;; This function splits strings using shell-like syntax:
+;; (shell-split-string "abc")  ->  '("abc")
+;; (shell-split-string "abc  def")  ->  '("abc" "def")
+;; (shell-split-string "abc \"def ghi\"")  ->  '("abc" "def ghi")
+
 
 ;;; Code:
 

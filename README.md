@@ -10,7 +10,7 @@ Usage Example
 -------------
 
 `shell-split-string.el` simply provides one function: `shell-split-string`,
-and it works as follows:
+and it works like:
 
 ```el
 (shell-split-string "abc")  ->  '("abc")
