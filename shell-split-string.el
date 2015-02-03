@@ -43,6 +43,7 @@
   '(?  ?\f ?\t ?\n ?\r ?\v)
   "List of chars of separators.")
 
+;;;###autoload
 (defun shell-split-string (str)
   "Split string STR using shell-like syntax and return resulting list."
   (shell--split-string-1 (mapcar 'identity str) nil nil nil))
