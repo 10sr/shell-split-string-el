@@ -13,10 +13,11 @@
 (defmacro ert-sss-inverse-check (args)
   "Check if `shell-split-string' is an inverse function of `mapconcat' and
  `shell-quote-argument' by ARGS."
-  `(should (equal (shell-split-string (mapconcat 'shell-quote-argument
-                                                  ,args
-                                                  " "))
-                  ,args)))
+  `(let ((a ,args))
+     (should (equal (shell-split-string (mapconcat 'shell-quote-argument
+                                                   a
+                                                   " "))
+                    a))))
 
 (ert-deftest test-shell-split-string ()
   (ert-sss-should-equal ""
