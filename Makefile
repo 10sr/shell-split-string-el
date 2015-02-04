@@ -7,7 +7,5 @@ tests_el = $(wildcard test/*.el)
 all:
 
 test: $(tests_el)
-	$(emacs) -batch -Q -L . \
-		--eval "(require 'ert)" \
-		--eval "(add-hook 'command-line-functions (lambda () (load-file argi) (or command-line-args-left (ert-run-tests-batch-and-exit))))" \
-		$^
+	$(emacs) -batch -Q -L . --eval "(require 'ert)" $(^:%=-l "%") \
+		-f ert-run-tests-batch-and-exit
