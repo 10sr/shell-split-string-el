@@ -3,7 +3,7 @@
 (defmacro ert-sss-should-equal (str result)
   "Judge if `shell-split-string' returns expected RESULT from STR."
   `(progn
-     (message "Should eq    : %S\t->\t%S"
+     (message "Parse check  : %S\t->\t%S"
               ,str ,result)
      (should (equal (shell-split-string ,str)
                   ,result)))
@@ -12,7 +12,7 @@
 (defmacro ert-sss-should-error (str)
   "Judge if `shell-split-string' throws error with arg STR."
   `(progn
-     (message "Should err   : %S"
+     (message "Error check  : %S"
               ,str)
      (should-error (shell-split-string ,str))))
 
