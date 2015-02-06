@@ -4,11 +4,11 @@ ert_tests_el = $(wildcard test/*.el)
 el = $(wildcard *.el)
 elc = $(el:%.el=%.elc)
 
-.PHONY: all test test-ert
+.PHONY: all test test-ert build
 
 all:
 
-test: test-ert build
+test: build test-ert
 
 build: $(elc)
 
