@@ -4,7 +4,7 @@
 
 
 
-shell-split-string-el
+shell-split-string.el
 =====================
 
 An Emacs lisp library to split string using shell-like syntax.
