@@ -53,9 +53,9 @@
 ;;;###autoload
 (defun shell-split-string (str)
   "Split string STR using shell-like syntax and return resulting list."
-  (shell--split-string-1 (mapcar 'identity str) nil nil nil))
+  (shell-split-string--1 (mapcar 'identity str) nil nil nil))
 
-(defun shell--split-string-1 (rest current quote done)
+(defun shell-split-string--1 (rest current quote done)
   "Split string using shell-like syntax and return resulting list.
 
 REST should be a list of chars that is not read yet.
@@ -82,19 +82,19 @@ DONE is a list of strings that was already processed."
        ((memq first shell-split-string-separators)
         (if quote
             ;; if cnrrently in inside of quotation, just append to current word
-            (shell--split-string-1 rest
+            (shell-split-string--1 rest
                                    `(,@current ,first)
                                    quote
                                    done)
           ;; if outside of quotation, reading char is end of current word
           (if current
-              (shell--split-string-1 rest
+              (shell-split-string--1 rest
                                      nil
                                      nil
                                      `(,@done ,(apply 'string current)))
             ;; if current word is nil, that means multiple separators appear
             ;; successively
-            (shell--split-string-1 rest
+            (shell-split-string--1 rest
                                    nil
                                    nil
                                    done))))
@@ -109,18 +109,18 @@ DONE is a list of strings that was already processed."
           (if (eq quote (car rest))
               (let ((first (car rest))
                     (rest (cdr rest)))
-                (shell--split-string-1 rest
+                (shell-split-string--1 rest
                                        `(,@current ,first)
                                        quote
                                        done))
-            (shell--split-string-1 rest
+            (shell-split-string--1 rest
                                    `(,@current ,first)
                                    quote
                                    done)))
          ('otherwise
           (let ((first (car rest))
                 (rest (cdr rest)))
-            (shell--split-string-1 rest
+            (shell-split-string--1 rest
                                    `(,@current ,first)
                                    quote
                                    done)))))
@@ -129,28 +129,28 @@ DONE is a list of strings that was already processed."
         (cond
          ((eq first quote)
           ;; end of quotation
-          (shell--split-string-1 rest
+          (shell-split-string--1 rest
                                  current
                                  nil
                                  done))
          (quote
           ;; quote does not match, but still quoted with another letter
           ;; for example quoted with \", but read '
-          (shell--split-string-1 rest
+          (shell-split-string--1 rest
                                  `(,@current ,first)
                                  quote
                                  done))
 
          ('otherwise
           ;; if not quoted yet, start quoted word
-          (shell--split-string-1 rest
+          (shell-split-string--1 rest
                                  current
                                  first
                                  done))
          ))
 
        ('otherwise
-        (shell--split-string-1 rest
+        (shell-split-string--1 rest
                                `(,@current ,first)
                                quote
                                done))
